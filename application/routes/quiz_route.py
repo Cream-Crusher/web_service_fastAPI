@@ -6,7 +6,7 @@ from application.database import get_session
 from application.schemas.quiz_schema import QuizCreateDTO, QuestionsNumDTO
 
 from application.services.quiz_service import create_quiz, get_quiz
-from application.services.question_services import get_questions
+from application.services.question_service import get_questions
 
 from typing import Optional
 

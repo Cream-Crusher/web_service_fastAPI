@@ -5,7 +5,7 @@ from sqlalchemy import desc, select
 from sqlalchemy.orm import selectinload
 
 from application.models.quiz_model import Quiz
-from application.services.services_category import get_or_create_category
+from application.services.category_service import get_or_create_category
 
 URL_JSERVICE = 'https://jservice.io/api/random'
 DATE_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
