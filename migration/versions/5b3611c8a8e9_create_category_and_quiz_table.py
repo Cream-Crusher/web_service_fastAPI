@@ -20,6 +20,14 @@ depends_on: Union[str, Sequence[str], None] = None
 
 def upgrade() -> None:
     op.create_table(
+        'categories',
+        sa.Column('id', sa.Integer, primary_key=True),
+        sa.Column('title', sa.String(50), index=True),
+        sa.Column('created_at', sa.DateTime),
+        sa.Column('updated_at', sa.DateTime),
+        sa.Column('clues_count', sa.Integer)
+    )
+    op.create_table(
         'quizzes',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('answer', sa.String(50), index=True),
@@ -27,14 +35,6 @@ def upgrade() -> None:
         sa.Column('created_at', sa.DateTime),
         sa.Column('updated_at', sa.DateTime),
         sa.Column('category_id', sa.Integer, sa.ForeignKey('categories.id'), nullable=False)
-    )
-    op.create_table(
-        'categories',
-        sa.Column('id', sa.Integer, primary_key=True),
-        sa.Column('title', sa.String(50), index=True),
-        sa.Column('created_at', sa.DateTime),
-        sa.Column('updated_at', sa.DateTime),
-        sa.Column('clues_count', sa.Integer)
     )
 
 
