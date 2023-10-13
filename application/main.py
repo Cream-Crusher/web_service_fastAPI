@@ -4,4 +4,4 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-app.include_router(quiz_route.router)
+# app.include_router(quiz_route.router)
