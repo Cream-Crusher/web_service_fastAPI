@@ -1,6 +1,6 @@
 import requests
 
-from application.services.quiz_service import URL_JSERVICE
+URL_JSERVICE = 'https://jservice.io/api/random'
 
 
 async def get_questions(questions_num: int):

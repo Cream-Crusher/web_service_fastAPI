@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  # Сервис для PostgreSQL
+  postgres:
+    env_file:
+      - .env
+    image: postgres
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+
+  # Сервис FastAPI приложения
+  fastapi_app:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+volumes:
+  db-data:
